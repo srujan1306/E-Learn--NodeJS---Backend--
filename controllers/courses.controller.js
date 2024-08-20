@@ -3,6 +3,7 @@ import {
   getCourses,
   createCourse,
   deleteCourseById,
+  getCourseById,
 } from "../services/courses.service.js";
 
 async function getCoursesCtr(request, response) {
@@ -30,5 +31,17 @@ async function deleteCourseByIdCtr(request, response) {
     response.status(404).send({ msg: "course not found" });
   }
 }
+async function getCourseByIdCtr(request, response) {
+  const { courseId } = request.params;
+  const result = await getCourseById(courseId);
+  result
+    ? response.send(result.data)
+    : response.status(404).send({ msg: "course not found" });
+}
 
-export { getCoursesCtr, createCourseCtr, deleteCourseByIdCtr };
+export {
+  getCoursesCtr,
+  createCourseCtr,
+  deleteCourseByIdCtr,
+  getCourseByIdCtr,
+};

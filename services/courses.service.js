@@ -9,5 +9,8 @@ async function createCourse(data) {
 async function deleteCourseById(courseId) {
   await Courses.delete({ courseId: courseId }).go();
 }
+async function getCourseById(courseId) {
+  return await Courses.get({ courseId: courseId }).go();
+}
 
-export { getCourses, createCourse, deleteCourseById };
+export { getCourses, createCourse, deleteCourseById, getCourseById };
