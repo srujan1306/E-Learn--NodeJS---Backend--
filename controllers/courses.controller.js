@@ -5,7 +5,7 @@ import {
   deleteCourseById,
   getCourseById,
 } from "../services/courses.service.js";
-
+import { v4 as uuidv4 } from "uuid";
 async function getCoursesCtr(request, response) {
   const allcourses = await getCourses();
   response.send(allcourses.data);
@@ -13,6 +13,7 @@ async function getCoursesCtr(request, response) {
 
 async function createCourseCtr(request, response) {
   const data = request.body;
+  data.courseId = uuidv4();
   const addcourse = await createCourse(data);
 
   response.send(addcourse.data);
