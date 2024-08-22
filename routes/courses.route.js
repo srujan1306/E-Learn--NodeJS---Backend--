@@ -10,7 +10,7 @@ import { auth } from "../middleware/auth.middleware.js";
 const router = express.Router();
 
 router.get("/", getCoursesCtr);
-router.get("/:courseId", getCourseByIdCtr);
+router.get("/:courseId", auth, getCourseByIdCtr);
 router.post("/", createCourseCtr);
 router.delete("/del/:courseId", deleteCourseByIdCtr);
 
