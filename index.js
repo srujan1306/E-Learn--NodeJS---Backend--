@@ -1,5 +1,7 @@
 import cors from "cors";
 import courseRouter from "./routes/courses.route.js";
+import usersRouter from "./routes/users.route.js";
+
 // import usersRouter from "./routes/users.route.js";
 import express from "express";
 const app = express();
@@ -13,7 +15,7 @@ app.get("/", function (request, response) {
 });
 
 app.use("/Elearn", courseRouter);
-// app.use("/users", usersRouter);
+app.use("/users", usersRouter);
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
 
